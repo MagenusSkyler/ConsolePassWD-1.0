@@ -82,7 +82,7 @@ echo %date% ^|^|%time% : ConsolePassWD 1.0 was started.>>AppsDataBase\log.txt
 :start_main
 cls
 echo ==============================================================================
-echo.                 ConsolePassWD -Console Password Manager.
+echo.                   ConsolePassWD -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
@@ -108,7 +108,7 @@ if %errorcode% == 1 (
    echo %date% ^|^|%time% : Error, 7z.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
    cls
 	echo ==============================================================================
-   echo.                 ConsolePassWD -Console Password Manager.
+   echo.                   ConsolePassWD -Console Password Manager.
    echo ==============================================================================
    echo.
    echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
@@ -122,7 +122,7 @@ if %errorcode% == 1 (
    echo %date% ^|^|%time% : Error, Te.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                 ConsolePassWD -Console Password Manager.
+   echo.                   ConsolePassWD -Console Password Manager.
    echo ==============================================================================
    echo.
    echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
@@ -136,7 +136,7 @@ if %errorcode% == 1 (
    echo %date% ^|^|%time% : Error, Incorrect State value found in cfg.ini.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                 ConsolePassWD -Console Password Manager.
+   echo.                   ConsolePassWD -Console Password Manager.
    echo ==============================================================================
    echo.
    echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
@@ -149,7 +149,7 @@ if %errorcode% == 1 (
 ) else if %errorcode% == 4 (
    cls
 	echo ==============================================================================
-   echo.                 ConsolePassWD -Console Password Manager.
+   echo.                   ConsolePassWD -Console Password Manager.
    echo ==============================================================================
    echo.
    echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
@@ -179,7 +179,7 @@ if %errorcode% == 1 (
 ) else if %errorcode% == 5 (
    cls
 	echo ==============================================================================
-   echo.                 ConsolePassWD -Console Password Manager.
+   echo.                   ConsolePassWD -Console Password Manager.
    echo ==============================================================================
    echo.
    echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
