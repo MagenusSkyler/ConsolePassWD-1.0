@@ -334,7 +334,7 @@ temp.bat
 :update_regestry
 if %Restore% GTR 0 set Update=1 && goto restore_default
 if %WindowMode% LSS 2 (
-	set WindowSize=1638469 && set ScreenBufferSize=655294533
+	set WindowSize=1966160 && set ScreenBufferSize=655294544
 )
 if %WindowMode% EQU 2 (
 	set WindowMode=%WindowMode%
