@@ -221,7 +221,7 @@ echo #=[\Window\Configuration\]                                             >>Ap
 echo #=Do not change ScreenBufferSize value for maximum password limit.     >>AppsDataBase\cfg.ini
 echo ScreenBufferSize=^%ScreenBufferSize%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
-echo #=CursorColor can be any hex color code to decimal converted value.    >>AppsDataBase\cfg.ini
+echo #=CursorColor can be any RGB color code to decimal converted value.    >>AppsDataBase\cfg.ini
 echo #=Red[255], Green[65280], Blue[16711680], Yellow[65535], Aqua[16776960]>>AppsDataBase\cfg.ini
 echo #=White[16777215], Black[0], Orange{42495], Brown[7482] etc.           >>AppsDataBase\cfg.ini
 echo CursorColor=^%CursorColor%>>AppsDataBase\cfg.ini
@@ -236,7 +236,7 @@ echo.>>AppsDataBase\cfg.ini
 echo #=WindowAlpha can be 170, 187, 204, 221, 238 and 255. [transparency]   >>AppsDataBase\cfg.ini
 echo WindowAlpha=^%WindowAlpha%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
-echo #=CursorSize can be minimum 25 to maximum 100. [cursor thickness]      >>AppsDataBase\cfg.ini
+echo #=CursorSize can be minimum 25 to maximum 100. [cursor height]         >>AppsDataBase\cfg.ini
 echo #=This doesn't work all "CursorType", doesn't work with default[2]     >>AppsDataBase\cfg.ini
 echo CursorSize=^%CursorSize%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
@@ -284,21 +284,42 @@ for /f "delims=" %%L in ( AppsDataBase\cfg.ini ) do set %%L >nul
 if %RunApp% LSS 1 ( echo %date% ^|^|%time% : App exited due to configuration.>>AppsDataBase\log.txt && exit )
 if %bg_color% EQU %fg_color% (
 	echo. bg and fg color cannot not be same ...
-	echo. Fixing color settings ...
+	timeout /t 1 >nul
 	set bg_color=7 && set fg_color=0
-	timeout /t 2 >nul
 	goto generate_cgf
-)
-if %bg_color% NEQ %fg_color% ( 
-    set string=%bg_color%%fg_color%
-    set color=%string: =%
 )
 if %endswith% NEQ cmd (
 	if %endswith% NEQ bat (
 		echo. Invalid "endswith" value ...
-		echo. Fixing endswith value ...
-		timeout /t 2 >nul
+		timeout /t 1 >nul
 		set endswith=cmd && goto generate_cgf
+	)
+)
+if %WindowAlpha% NEQ 170 (
+	if %WindowAlpha% NEQ 187 (
+		if %WindowAlpha% NEQ 204 (
+			if %WindowAlpha% NEQ 221 (
+				if %WindowAlpha% NEQ 238 (
+					if %WindowAlpha% NEQ 255 (
+						echo Invalid "WindowAlpha" value ...
+						timeout /t 1 >nul
+						set WindowAlpha=221 && goto generate_cgf
+					)
+				)
+			)
+		)
+	)
+)
+if %CursorType% GTR 5 (
+	echo Invalid "CursorType" value ...
+	timeout /t 1 >nul
+	set CursorType=2 && goto generate_cgf
+)
+if %CursorSize% LSS 25 (
+	if %CursorSize% GTR 100 (
+		echo Invalid "CursorSize" value ...
+		timeout /t 1 >nul
+		set CursorSize=25 && goto generate_cgf
 	)
 )
 goto load_configuration
@@ -384,6 +405,7 @@ echo. Incomplete code ...
 echo. File will be updated soon ...
 echo. Press any key to exit ...
 pause >nul
+
 
 
 
