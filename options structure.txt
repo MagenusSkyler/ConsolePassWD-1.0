@@ -1,15 +1,15 @@
-[0] ConsolePassWD ✓
+[0] ~ConsolePassX ✓
  ├───[1] New User ✓
  │    ├───[1] Create account ✓
  │    ├───[2] Look at functions ✓
  │    │    ├───[1] Change configuration ✓
- │    │    │    ├───[1] Using ConsolePassWD's console ✓
+ │    │    │    ├───[1] Using ~ConsolePassX's console ✓
  │    │    │    └───[2] Using MS-Windows Notepad ✓
  │    │    ├───[2] Login to account ✓
  │    │    │    ├───[1] Change login information ✓
  │    │    │    ├───[2] Check saved passwords ✓
  │    │    │    ├───[3] Edit password file ✓
- │    │    │    │    ├───[1] Using ConsolePassWD's console ✓
+ │    │    │    │    ├───[1] Using ~ConsolePassX's console ✓
  │    │    │    │    └───[2] Using MS-Windows Notepad ✓
  │    │    │    ├───[4] Add new passwords ✓
  │    │    │    ├───[5] Logout of account ✓
@@ -17,9 +17,9 @@
  │    │    │    ├───[7] Check logs ✓
  │    │    │    └───[8] Make backup ✓
  │    │    ├───[3] Forgot password ✓
- │    │    ├───[4] Exit ConsolePassWD ✓
+ │    │    ├───[4] Exit ~ConsolePassX ✓
  │    │    └───[5] Restore backup ✓
  │    ├───[3] I already have account ✓
- │    ├───[4] Exit ConsolePassWD ✓
+ │    ├───[4] Exit ~ConsolePassX ✓
  │    └───[5] Restore backup ✓
  └───[2] Old User 

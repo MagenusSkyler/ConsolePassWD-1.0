@@ -3,11 +3,11 @@
 @color 70
 @setlocal DisableDelayedExpansion
 set appsbase=AppsDataBase\;%appsbase%
-@title ConsolePassWD 1.0 -Console Password Manager
-op
+@title ~ConsolePassX 1.0 -Console Password Manager
+
 @REM setting configurations environment variables
 set ScreenBufferSize=655294584
-set fname=ConsolePassWD-1.0
+set fname=~ConsolePassX-1.0
 set CursorColor=4294967295
 set WindowSize=1966200
 set FontWeight=1536
@@ -75,18 +75,18 @@ set Gadate=
 if not exist AppsDataBase\log.txt (
    echo %date% ^|^|%time% : No logs saved before this time.>>AppsDataBase\log.txt
 )
-echo %date% ^|^|%time% : ConsolePassWD 1.0 was started.>>AppsDataBase\log.txt
+echo %date% ^|^|%time% : ~ConsolePassX 1.0 was started.>>AppsDataBase\log.txt
 
 @REM main user interface starts from here
 :start_main
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
-echo. Starting ConsolePassWD ...
+echo. Starting ~ConsolePassX ...
 if exist temp.bat del temp.bat >nul
 timeout /t 1 /nobreak >nul
 echo. Checking AppsDataBase ...
@@ -107,51 +107,51 @@ if %errorcode% == 1 (
    echo %date% ^|^|%time% : Error, 7z.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
    cls
 	echo ==============================================================================
-   echo.                   ConsolePassWD -Console Password Manager.
+   echo.                   ~ConsolePassX -Console Password Manager.
    echo ==============================================================================
    echo.
-   echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Error found, error code is 0x001
 	echo. File missing from AppsDataBase folder [File name = 7z.exe].
-	echo. Please reinstall ConsolePassWD on the same folder to fix this error.
-	echo. ConsolePassWD cannot run without [7z.exe], press any key to exit app.
+	echo. Please reinstall ~ConsolePassX on the same folder to fix this error.
+	echo. ~ConsolePassX cannot run without [7z.exe], press any key to exit app.
 	pause >nul && exit
 ) else if %errorcode% == 2 (
    echo %date% ^|^|%time% : Error, Te.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                   ConsolePassWD -Console Password Manager.
+   echo.                   ~ConsolePassX -Console Password Manager.
    echo ==============================================================================
    echo.
-   echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Error found, error code is "0x002"
 	echo. File missing from AppsDataBase folder [File name = Te.exe].
-	echo. Please reinstall ConsolePassWD on the same folder to fix this error.
-	echo. ConsolePassWD cannot run without [Te.exe], press any key to exit app.
+	echo. Please reinstall ~ConsolePassX on the same folder to fix this error.
+	echo. ~ConsolePassX cannot run without [Te.exe], press any key to exit app.
 	pause >nul && exit
 ) else if errorlevel == 3 (
    echo %date% ^|^|%time% : Error, Incorrect State value found in cfg.ini.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                   ConsolePassWD -Console Password Manager.
+   echo.                   ~ConsolePassX -Console Password Manager.
    echo ==============================================================================
    echo.
-   echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
-	echo. There is a mistake in configuration under [\ConsolePassWD\State\].
+	echo. There is a mistake in configuration under [\~ConsolePassX\State\].
 	echo. "State" value is invalid, you can manually set it to 1 or 2.
-	echo. Else ConsolePassWD will automatically try to fix this error ...
+	echo. Else ~ConsolePassX will automatically try to fix this error ...
 	echo. Press any key to automatically fix this mistake ...
 	pause >nul && goto generate_cgf
 ) else if %errorcode% == 4 (
    cls
 	echo ==============================================================================
-   echo.                   ConsolePassWD -Console Password Manager.
+   echo.                   ~ConsolePassX -Console Password Manager.
    echo ==============================================================================
    echo.
-   echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Warning : critical error "0x004"
 	echo. Cannot auto recover file ...
@@ -159,11 +159,11 @@ if %errorcode% == 1 (
 	echo. Put backups file [*.backup] in current folder if you have.
 	echo.
 	echo. Steps for manual recovery :
-	echo. Step 01 : Install ConsolePassWD 1.0 in another folder.
+	echo. Step 01 : Install ~ConsolePassX 1.0 in another folder.
 	echo. Step 02 : Create another account with same name and password.
 	echo. Step 03 : Open AppsDataBase folder and locate file 71a.op in new one.
-	echo. Step 04 : Copy file and paste it in old ConsolePassWD's AppsDataBase folder.
-	echo. Step 05 : Run old ConsolePassWD app and you should be able to proceed.
+	echo. Step 04 : Copy file and paste it in old ~ConsolePassX's AppsDataBase folder.
+	echo. Step 05 : Run old ~ConsolePassX app and you should be able to proceed.
 	echo. Step 06 : Login with your name and password and it should look normal.
 	echo.
 	echo. If you don't remember you password then you cannot recover passwords.
@@ -178,10 +178,10 @@ if %errorcode% == 1 (
 ) else if %errorcode% == 5 (
    cls
 	echo ==============================================================================
-   echo.                   ConsolePassWD -Console Password Manager.
+   echo.                   ~ConsolePassX -Console Password Manager.
    echo ==============================================================================
    echo.
-   echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Warning : critical error "0x005"
 	echo. Cannot auto recover file ... :^(
@@ -206,13 +206,13 @@ if %errorcode% == 1 (
 :generate_cgf
 if exist AppsDataBase\71a.op ( set state=2 )
 if not exist AppsDataBase\71a.op ( set state=1 )
-echo #=Press [Ctrl + X] then [N] to go back to ConsolePassWD from setting.  >AppsDataBase\cfg.ini
+echo #=Press [Ctrl + X] then [N] to go back to ~ConsolePassX from setting.  >AppsDataBase\cfg.ini
 echo #=Press [Ctrl + X] then [Y] then [Enter] to save changes.              >>AppsDataBase\cfg.ini
-echo #=Some changes only applies when you run ConsolePassWD next time.      >>AppsDataBase\cfg.ini
+echo #=Some changes only applies when you run ~ConsolePassX next time.      >>AppsDataBase\cfg.ini
 echo #=Change "Restore" value to 1 if you want to restore default settings. >>AppsDataBase\cfg.ini
 echo #=Don't forget to change "Update" value at the end.                    >>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
-echo #=[\ConsolePassWD\State\]                                              >AppsDataBase\cfg.ini
+echo #=[\~ConsolePassX\State\]                                              >AppsDataBase\cfg.ini
 echo #=Valid value for "State" is 1 and 2, don't change manually.           >>AppsDataBase\cfg.ini
 echo State=^%state%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
@@ -390,7 +390,7 @@ set bg_color=7
 set fg_color=0
 set WindowMode=2
 set WinDefault=0
-set fname=ConsolePassWD-1.0
+set fname=~ConsolePassX-1.0
 set endswith=cmd
 set RunApp=1
 set Restore=0
@@ -408,7 +408,7 @@ set errorcode=3 && goto check_error
 :new_user
 cls 
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Press mentioned key "[1]" to seletct corresponding option.
@@ -416,7 +416,7 @@ echo.
 echo. ^| [1] Create account                [ Default  ] ^|
 echo. ^| [2] Look at functions             [ Guest    ] ^|
 echo. ^| [3] I already have account        [ Error?   ] ^|
-echo. ^| [4] Exit ConsolePassWD            [ Why now? ] ^|
+echo. ^| [4] Exit ~ConsolePassX            [ Why now? ] ^|
 echo. ^| [5] Restore backup                [ *.backup ] ^|
 echo.
 choice /C:12345 /N /M "->[Waiting for you to select]<-"
@@ -426,11 +426,11 @@ if errorlevel == 3 goto cfgerror
 if errorlevel == 2 goto as_guest
 if errorlevel == 1 goto create_ac
 
-@REM Create ConsolePassWD account
+@REM Create ~ConsolePassX account
 :create_ac
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 set /p name="Enter your nick/user name : " && echo.
@@ -457,7 +457,7 @@ if %keys% == 0 (
 )
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Is everything correct?
@@ -473,14 +473,14 @@ choice /C:yn /N /M "->[If this is correct Press 'Y' else Press 'N']<-"
 if errorlevel == 2 cls && goto create_ac
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
 echo. -----------------------------------------------------------------------------
 echo. Please do not delete any file from AppsDataBase Folder.
-echo. This files are used by ConsolePassWD to store all types of data.
+echo. This files are used by ~ConsolePassX to store all types of data.
 echo. If you delete any file and loose your passwords its on you.
 echo. Also make backups of files, sometimes that should help.
 echo. -----------------------------------------------------------------------------
@@ -498,25 +498,25 @@ echo -------------------------------------------------------->>AppsDataBase\T71b
 AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
 set State=2 && cls && goto generate_cgf
 
-@REM New users can look at all ConsolePassWD's functions.
+@REM New users can look at all ~ConsolePassX's functions.
 :as_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
 echo. You are about to enter guest mode now ...
 echo. You will be able to take a look at all the functions ...
-echo. Press any key to start taking a look around ConsolePassWD 1.0 ...
+echo. Press any key to start taking a look around ~ConsolePassX 1.0 ...
 pause >nul
 goto guest_main
 
 :guest_main
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : This is the main screen preview after creating account.
@@ -526,7 +526,7 @@ echo.
 echo. ^| [1] Change configuration          [ Advanced ] ^|
 echo. ^| [2] Login to account              [ Default  ] ^|
 echo. ^| [3] Forgot password               [ Usual    ] ^|
-echo. ^| [4] Exit ConsolePassWD            [ Why now? ] ^|
+echo. ^| [4] Exit ~ConsolePassX            [ Why now? ] ^|
 echo. ^| [5] Restore backup                [ *.backup ] ^|
 echo.
 choice /C:12345 /N /M "->[Waiting for you to select]<-"
@@ -539,12 +539,12 @@ if errorlevel == 1 goto change_cfg_guest
 :change_cfg_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. How do you want to open this file?
 echo.
-echo. ^| [1] Using ConsolePassWD's console ^|
+echo. ^| [1] Using ~ConsolePassX's console ^|
 echo. ^| [2] Using MS-Windows Notepad      ^|
 echo.
 choice /C:12 /N /M "->[Waiting for you to select]<-"
@@ -554,7 +554,7 @@ if errorlevel == 1 goto editcfg_nano_guest
 :editcfg_nano_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Opening configuration file ...
@@ -572,7 +572,7 @@ goto check_configuration
 :editcfg_notepad_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Opening configuration file ...
@@ -588,7 +588,7 @@ goto check_configuration
 :login_task_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : You dont have account so you didn't have to login.
@@ -616,7 +616,7 @@ if errorlevel == 1 goto change_login_guest
 :change_login_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo Are you sure you want to reset all login information ?
@@ -633,14 +633,14 @@ set gpass=Pass
 set gkeys=0000
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : Press [Enter] to move on.
 set /p "guest=Type your current password : "
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : You can type anything or just press [Enter].
@@ -649,7 +649,7 @@ set /p "gpass=Type your new password : " && echo.
 set /p "gkeys=Type your new number : " && echo.
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Is everything correct?
@@ -668,13 +668,13 @@ goto login_task_guest
 :check_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo Comment : This is what the format would look like ...
 echo --------------------------------------------------------
 echo --------------------------------------------------------
-echo Platform     :     ConsolePassWD
+echo Platform     :     ~ConsolePassX
 echo Page URL     :     https://github.com/MagenusSkyler
 echo User Name    :     Your name
 echo E-mail Id    :     your email id
@@ -683,7 +683,7 @@ echo Password     :     supersecretpassword
 echo date         :     10/10/2021
 echo --------------------------------------------------------
 echo --------------------------------------------------------
-echo Platform     :     ConsolePassWD
+echo Platform     :     ~ConsolePassX
 echo Page URL     :     https://github.com/MagenusSkyler
 echo User Name    :     Your name
 echo E-mail Id    :     your email id
@@ -711,12 +711,12 @@ pause >nul && goto login_task_guest
 :edit_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. How do you want to open this file?
 echo.
-echo. ^| [1] Using ConsolePassWD's console ^|
+echo. ^| [1] Using ~ConsolePassX's console ^|
 echo. ^| [2] Using MS-Windows Notepad      ^|
 echo.
 choice /C:12 /N /M "->[Waiting for you to select]<-"
@@ -726,7 +726,7 @@ if errorlevel == 1 goto edit_nano_guest
 :edit_nano_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Reading database ...
@@ -735,8 +735,8 @@ echo Comment : this file will not be saved.>AppsDataBase\guest.txt
 echo Comment : Press [ctrl + X] to exit.>>AppsDataBase\guest.txt
 echo -------------------------------------------------------->>AppsDataBase\guest.txt
 echo -------------------------------------------------------->>AppsDataBase\guest.txt
-echo Platform     :     ConsolePassWD>>AppsDataBase\guest.txt
-echo Page URL     :     www.ConsolePassWD.com>>AppsDataBase\guest.txt
+echo Platform     :     ~ConsolePassX>>AppsDataBase\guest.txt
+echo Page URL     :     www.~ConsolePassX.com>>AppsDataBase\guest.txt
 echo User Name    :     Your name>>AppsDataBase\guest.txt
 echo E-mail Id    :     your email id>>AppsDataBase\guest.txt
 echo Number       :     your phone number>>AppsDataBase\guest.txt
@@ -755,7 +755,7 @@ goto login_task_guest
 :edit_notepad_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Reading database ...
@@ -763,8 +763,8 @@ echo. Creating editable file ...
 echo Comment : this file will not be saved.>AppsDataBase\guest.txt
 echo -------------------------------------------------------->>AppsDataBase\guest.txt
 echo -------------------------------------------------------->>AppsDataBase\guest.txt
-echo Platform     :     ConsolePassWD>>AppsDataBase\guest.txt
-echo Page URL     :     www.ConsolePassWD.com>>AppsDataBase\guest.txt
+echo Platform     :     ~ConsolePassX>>AppsDataBase\guest.txt
+echo Page URL     :     www.~ConsolePassX.com>>AppsDataBase\guest.txt
 echo User Name    :     Your name>>AppsDataBase\guest.txt
 echo E-mail Id    :     your email id>>AppsDataBase\guest.txt
 echo Number       :     your phone number>>AppsDataBase\guest.txt
@@ -781,7 +781,7 @@ goto login_task_guest
 :addpass_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : password will not be added unless you create account.
@@ -801,7 +801,7 @@ echo.
 set /p Gadate="date         :     "
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Comment : password will not be added unless you create account.
@@ -828,10 +828,10 @@ goto login_task_guest
 :exit_app_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
 echo. Checking files ...
 echo. Everything is ok ...
@@ -841,7 +841,7 @@ pause >nul && exit
 :read_log_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 if not exist AppsDataBase\log.txt (
@@ -870,7 +870,7 @@ if not exist AppsDataBase\log.txt (
 :backup_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. You cannot make backup of database files without account ...
@@ -881,12 +881,12 @@ pause >nul && goto login_task_guest
 :forgotpass_guest
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. ConsolePassWD 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
-echo. Forgot password? Thats definitely why you use ConsolePassWD.
+echo. Forgot password? Thats definitely why you use ~ConsolePassX.
 echo. But don't worry you can reset you password easily ...
 echo. Just enter your name below and keep following ...
 echo.
@@ -894,7 +894,7 @@ echo. Comment : Type anything or just press [Enter].
 set /p "guest=Type out your nick/user name : "
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. We need to conform its you so type you phone number.
@@ -903,7 +903,7 @@ echo. Comment : Type anything or just press [Enter].
 set /p "guest=Type your phone number : "
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. You have entered correct phone number ...
@@ -919,7 +919,7 @@ echo. Comment : Type anything or just press [Enter].
 set /p "gkeys=Type your phone number : "
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Is everything correct?
@@ -938,10 +938,10 @@ goto guest_main
 set restore_bak=cpdata
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. Copy *.backup into same folder as ConsolePassWD-1.0 file
+echo. Copy *.backup into same folder as ~ConsolePassX-1.0 file
 echo. Make sure you dont place it in AppsDataBase folder
 echo.
 echo. Press [Enter] if file name is "opdata.backup"
@@ -956,7 +956,7 @@ if not exist %restore_bak%.backup (
 AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE "%restore_bak%.backup" >nul
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 if exist AppsDataBase\71a.op (
@@ -971,7 +971,7 @@ if exist AppsDataBase\cfg.ini (
 if not exist AppsDataBase\71a.op move 71a.op AppsDataBase\ >nul
 if not exist AppsDataBase\71b.op move 71b.op AppsDataBase\ >nul
 if not exist AppsDataBase\cfg.ini move cfg.ini AppsDataBase\ >nul
-echo. If any file already exists ConsolePassWD will not replace files.
+echo. If any file already exists ~ConsolePassX will not replace files.
 echo. Please replace files manually if not done automatically.
 echo. After you copy files to AppsDataBase folder-
 echo. Press any key to load new files ...
@@ -981,7 +981,7 @@ goto check_user_state
 :cfgerror
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo. Trying to look for a user account ...
@@ -999,7 +999,7 @@ pause >nul && goto new_user
 :old_user
 cls
 echo ==============================================================================
-echo.                   ConsolePassWD -Console Password Manager.
+echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo.
@@ -1007,4 +1007,3 @@ echo. Incomplete code ...
 echo. File will be updated soon ...
 echo. Press any key to exit ...
 pause >nul && exit
-
