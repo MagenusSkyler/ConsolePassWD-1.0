@@ -142,7 +142,7 @@ if %errorcode% == 1 (
 	echo.
 	echo. There is a mistake in configuration under [\~ConsolePassX\State\].
 	echo. "State" value is invalid, you can manually set it to 1 or 2.
-	echo. Else ~ConsolePassX will automatically try to fix this error ...
+	echo. Else ~ConsolePassX will automatically try to fix this error.
 	echo. Press any key to automatically fix this mistake ...
 	pause >nul && goto generate_cgf
 ) else if %errorcode% == 4 (
@@ -190,7 +190,7 @@ if %errorcode% == 1 (
 	echo. If you dont have backup file then unfortunately you have lost it.
 	echo.
 	echo. [Notice : its not an app error, 1 file was missing
-	echo.           [71b.op] from AppsDataBase folder.]
+	echo.           "71b.op" from AppsDataBase folder.]
 	echo.
 	echo. Info : you were told the beginning to make backup and be carefull
 	echo. about not getting any files deleted from AppsDataBase folder.
@@ -212,7 +212,7 @@ echo #=Some changes only applies when you run ~ConsolePassX next time.      >>Ap
 echo #=Change "Restore" value to 1 if you want to restore default settings. >>AppsDataBase\cfg.ini
 echo #=Don't forget to change "Update" value at the end.                    >>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
-echo #=[\~ConsolePassX\State\]                                              >AppsDataBase\cfg.ini
+echo #=[\~ConsolePassX\Sys\]                                                >>AppsDataBase\cfg.ini
 echo #=Valid value for "State" is 1 and 2, don't change manually.           >>AppsDataBase\cfg.ini
 echo State=^%state%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
@@ -257,7 +257,7 @@ echo #=WinDefault value must be 0 for all settings to work.                 >>Ap
 echo #=WinDefault value can be 0 or 1. [1 will disable other settings]      >>AppsDataBase\cfg.ini
 echo WinDefault=^%WinDefault%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
-echo #=[\Files\Name\State\]>>AppsDataBase\cfg.ini
+echo #=[\Files\Name\]>>AppsDataBase\cfg.ini
 echo #=fname means file name, it can be anything you want.                  >>AppsDataBase\cfg.ini
 echo fname=%fname%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
@@ -336,8 +336,8 @@ if %Update% LSS 1 goto check_user_state
 
 @REM change main files name if needed due to cfg.ini
 :change_filename
-echo. Problem found, file name needs to be changed ...
-echo. from %filename% to %appname% ...
+echo. Problem found, file name needs to be changed.
+echo. from %filename% to %appname%.
 echo. Press any key to change file name ...
 pause >nul && cls
 echo @echo off>temp.bat
@@ -487,6 +487,7 @@ echo. --------------------------------------------------------------------------
 echo.
 echo. If you agree press "Y" [For Yes] else Press "N" [For No]
 echo. Pressing "N" will Exit app without saving any setup progress.
+choice /C:yn /N /M "->[Waiting for choice 'Y' or 'N']<-"
 if errorlevel == 2 echo %date% ^|^|%time% : Account creation cancled.>>AppsDataBase\log.txt && exit
 echo uname=%name%>AppsDataBase\T71a
 echo upass=%pass%>>AppsDataBase\T71a
@@ -507,8 +508,8 @@ echo ===========================================================================
 echo.
 echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
-echo. You are about to enter guest mode now ...
-echo. You will be able to take a look at all the functions ...
+echo. You are about to enter guest mode now.
+echo. You will be able to take a look at all the functions.
 echo. Press any key to start taking a look around ~ConsolePassX 1.0 ...
 pause >nul
 goto guest_main
@@ -620,8 +621,8 @@ echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 echo Are you sure you want to reset all login information ?
-echo If yes then type "yes" letter by latter and press [Enter] ...
-echo Else Type "no" and hit [Enter], you will be back to option menu.
+echo If yes then type "yes" letter by latter and press [Enter].
+echo Else Type "no" and hit [Enter], you will be back to options menu.
 echo.
 set /p opt="Type 'yes' or 'no' : "
 if %opt% == no goto login_task_guest
@@ -819,8 +820,8 @@ echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
 choice /C:yn /N /M "->[Press 'Y' or 'N']<-"
 if errorlevel == 2 cls && goto addpass_guest
 echo.
-echo. No database file to save passwords into ...
-echo. Passwords not saved [needs account] ...
+echo. No database file to save passwords into.
+echo. Passwords not saved [needs account].
 echo. Press any key to go back ...
 pause >nul
 goto login_task_guest
@@ -873,8 +874,8 @@ echo ===========================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. You cannot make backup of database files without account ...
-echo. database is created when you create account ...
+echo. You cannot make backup of database files without account.
+echo. database is created when you create account.
 echo. Press any key to go back ...
 pause >nul && goto login_task_guest
 
@@ -887,7 +888,7 @@ echo.
 echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
 echo. Forgot password? Thats definitely why you use ~ConsolePassX.
-echo. But don't worry you can reset you password easily ...
+echo. But don't worry you can reset you password easily.
 echo. Just enter your name below and keep following ...
 echo.
 echo. Comment : Type anything or just press [Enter].
@@ -906,7 +907,7 @@ echo ===========================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
-echo. You have entered correct phone number ...
+echo. You have entered correct phone number.
 echo. So now you can reset you password ...
 echo.
 echo. Comment : Type anything or just press [Enter].
@@ -924,9 +925,11 @@ echo ===========================================================================
 echo.
 echo. Is everything correct?
 echo.
-echo. Name      :  %gname%
-echo. Password  :  %gpass%
-echo. Number    :  %gkeys%
+echo ------------------------------------------------------------------------------
+echo ^| Name      :  %gname%
+echo ^| Password  :  %gpass%
+echo ^| Number    :  %gkeys%
+echo ------------------------------------------------------------------------------
 echo.
 echo. Comment : Selecting 'Y' does nothing as you dont have account.
 echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
@@ -944,12 +947,12 @@ echo.
 echo. Copy *.backup into same folder as ~ConsolePassX-1.0 file
 echo. Make sure you dont place it in AppsDataBase folder
 echo.
-echo. Press [Enter] if file name is "opdata.backup"
+echo. Press [Enter] if file name is "cpdata.backup"
 set /p "restore_bak=>Type backups file name : "
 if not exist %restore_bak%.backup (
 	echo.
-	echo. %restore_bak%.backup does not exist on current folder ...
-	echo. Please recheck file name and try again ...
+	echo. %restore_bak%.backup does not exist on current folder.
+	echo. Please recheck file name and try again.
 	echo. Press any key to retry ... && pause >nul
 	goto restore_backup
 )
@@ -971,6 +974,7 @@ if exist AppsDataBase\cfg.ini (
 if not exist AppsDataBase\71a.op move 71a.op AppsDataBase\ >nul
 if not exist AppsDataBase\71b.op move 71b.op AppsDataBase\ >nul
 if not exist AppsDataBase\cfg.ini move cfg.ini AppsDataBase\ >nul
+echo.
 echo. If any file already exists ~ConsolePassX will not replace files.
 echo. Please replace files manually if not done automatically.
 echo. After you copy files to AppsDataBase folder-
@@ -997,13 +1001,514 @@ pause >nul && goto new_user
 
 @REM start of main users interface
 :old_user
+if not exist AppsDataBase\71a.op ( set errorcode=4 && goto check_error )
+if not exist AppsDataBase\71b.op ( set errorcode=5 && goto check_error )
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{default=N*lock*} -sdel -scsUTF-16LE "AppsDataBase\71a.op" -oAppsDataBase\ >nul
+for /f "delims=" %%L in ( AppsDataBase\T71a ) do set %%L
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{default=N*lock*} -sdel -scsUTF-16LE "AppsDataBase\71a.op" "AppsDataBase\T71a" >nul
+set lockpass=%upass%
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
+echo. Press mentioned key "[1]" to seletct corresponding option.
 echo.
-echo. Incomplete code ...
-echo. File will be updated soon ...
+echo. ^| [1] Change configuration          [ Advanced ] ^|
+echo. ^| [2] Login to account              [ Default  ] ^|
+echo. ^| [3] Forgot password               [ Usual    ] ^|
+echo. ^| [4] Exit ~ConsolePassX            [ Why now? ] ^|
+echo. ^| [5] Restore backup                [ *.backup ] ^|
+echo.
+choice /C:12345 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 5 goto restore_backup
+if errorlevel == 4 goto end_process
+if errorlevel == 3 goto forgotpass
+if errorlevel == 2 set counter=4 && goto login_ac
+if errorlevel == 1 goto change_cfg
+
+:change_cfg
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. How do you want to open this file?
+echo.
+echo. ^| [1] Using ~ConsolePassX's console ^|
+echo. ^| [2] Using MS-Windows Notepad      ^|
+echo.
+choice /C:12 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 2 goto editcfg_notepad
+if errorlevel == 1 goto editcfg_nano
+
+:editcfg_nano
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Opening configuration file ...
+timeout /T 1 /nobreak >nul
+if %color% EQU 70 color 07
+AppsDataBase\Te.exe AppsDataBase\cfg.ini
+@color %color%
+echo. Checking configuration ...
+timeout /T 1 /nobreak >nul
+for /f "delims=" %%L in ( AppsDataBase\cfg.ini ) do set %%L >nul
+echo. Updating files ...
+timeout /T 1 /nobreak >nul
+goto check_configuration
+
+:editcfg_notepad
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Opening configuration file ...
+timeout /T 1 /nobreak >nul
+Notepad.exe AppsDataBase\cfg.ini
+echo. Checking configuration ...
+timeout /T 1 /nobreak >nul
+for /f "delims=" %%L in ( AppsDataBase\cfg.ini ) do set %%L >nul
+echo. Updating files ...
+timeout /T 1 /nobreak >nul
+goto check_configuration
+
+:login_ac
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+set /p login_name="Type your user name: "
+if %counter% EQU 1 goto lockout
+
+set "psCommand=powershell -Command " $pword = read-host 'Enter your password' -AsSecureString;^
+  $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword);^
+   [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)""
+    for /f "usebackq delims=" %%p in (`%psCommand%`) do set login_pass=%%p
+)
+
+if %login_name% == %uname% (
+	if %login_pass% == %upass% echo %date% ^|^|%time% : Logged in to account successfully.>>AppsDataBase\log.txt && goto login_tasks
+) else (
+	goto wrong_login
+)
+
+:wrong_login
+echo.
+set /a counter-=1
+echo Incorrect username or password.
+if %counter% LSS 4 echo %counter% attempts left.
+echo Press any key to try again ...
+pause >nul
+goto login_ac
+
+:lockout
+echo.
+echo Too many incorrect attempts detected.
+echo Please use forgot password option instead.
+echo Please wait for 15 seconds before next try ...
+echo %date% ^|^|%time% : Too many login attempts failed.>>AppsDataBase\log.txt
+timeout /t 15 /nobreak >nul
+set counter=3
+goto old_user
+
+:login_tasks
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Press mentioned key "[1]" to seletct corresponding option.
+echo.
+echo. ^| [1] Change login information.  ^|
+echo. ^| [2] Check saved passwords.     ^|
+echo. ^| [3] Edit password file.        ^|
+echo. ^| [4] Add new passwords.         ^|
+echo. ^| [5] Logout of account.         ^|
+echo. ^| [6] Logout and exit.           ^|
+echo. ^| [7] Check logs.                ^|
+echo. ^| [8] Make backup.               ^|
+echo.
+choice /C:12345678 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 8 goto make_backup
+if errorlevel == 7 goto check_logs
+if errorlevel == 6 goto end_process
+if errorlevel == 5 goto old_user
+if errorlevel == 4 goto add_pass
+if errorlevel == 3 goto edit_pass
+if errorlevel == 2 goto check_pass
+if errorlevel == 1 goto change_login
+
+:change_login
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+
+set "psCommand=powershell -Command " $pword = read-host 'Enter current password' -AsSecureString;^
+  $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword);^
+   [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)""
+    for /f "usebackq delims=" %%p in (`%psCommand%`) do set current=%%p
+)
+
+if %current% NEQ %upass% echo You have typed incorrect password ... && echo Press any key to try again ... && pause >nul && goto change_login
+if %current% == %upass% (
+	echo.
+	set /p opt_name="Type your new nick name : " && echo.
+	set /p opt_pass="Type your new password : " && echo.
+	set /p opt_keys="Type your new number : " && echo.
+)
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Is everything correct?
+echo.
+echo -------------------------------------------------------------------
+echo ^| New Name      :   %opt_name%
+echo ^| New Password  :   %opt_pass%
+echo ^| New Number    :   %opt_keys%
+echo -------------------------------------------------------------------
+echo.
+echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
+choice /C:yn /N /M "->[If this is correct Press 'Y' else Press 'N']<-"
+if errorlevel == 2 goto change_user_info
+echo uname=%opt_name%>AppsDataBase\T71a
+echo upass=%opt_pass%>>AppsDataBase\T71a
+echo ukeys=%opt_keys%>>AppsDataBase\T71a
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+set lockpass=%opt_pass%
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{default=N*lock*} -sdel -scsUTF-16LE "AppsDataBase\71a.op" "AppsDataBase\T71a" >nul
+goto check_user_state
+
+:check_pass
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+echo %date% ^|^|%time% : Checked Saved passwords.>>AppsDataBase\log.txt
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+Type AppsDataBase\T71b
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+echo.
+echo. ^| [1] Change login information. [2] Refresh password file. ^|
+echo. ^| [3] Edit password file.       [4] Add new passwords.     ^|
+echo. ^| [5] Logout of account.        [6] Logout and exit        ^| 
+echo. ^| [7] Get back to options selection menu.                  ^| && echo.
+choice /C:1234567 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 7 goto login_tasks
+if errorlevel == 6 goto end_process
+if errorlevel == 5 goto check_user_state
+if errorlevel == 4 goto add_pass
+if errorlevel == 3 goto edit_pass
+if errorlevel == 2 goto check_pass
+if errorlevel == 1 goto change_login
+
+:edit_pass
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. How do you want to open this file?
+echo.
+echo. ^| [1] Using ConsolePassX's console ^|
+echo. ^| [2] Using MS-Windows Notepad     ^|
+echo.
+choice /C:12 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 2 goto edit_notepad
+if errorlevel == 1 goto edit_nano
+
+:edit_nano
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Reading database ...
+set /a rnd=(((%random% * 32768) + %random%) %%990000) + 10000
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+echo. Creating editable file ...
+ren AppsDataBase\T71b %rnd% >nul
+if %color% EQU 70 color 07
+AppsDataBase\TE.exe AppsDataBase\%rnd%
+ren AppsDataBase\%rnd% T71b
+@color %color%
+echo. Updating file ...
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+timeout 1 /nobreak >nul
+goto login_tasks
+
+:edit_notepad
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Reading database ...
+set /a rnd=(((%random% * 32768) + %random%) %%990000) + 10000
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+echo. Creating editable file ...
+ren AppsDataBase\T71b %rnd% >nul
+notepad AppsDataBase\%rnd%
+ren AppsDataBase\%rnd% T71b
+echo. Updating file ...
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+timeout 1 /nobreak >nul
+goto login_tasks
+
+:add_pass
+cls
+set platform=
+set pageurl=
+set username=
+set emailid=
+set anumber=
+set apasswd=
+set adate=
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+set /p platform="Platform     :     "
+echo.
+set /p pageurl="Page URL     :     "
+echo.
+set /p username="User Name    :     "
+echo.
+set /p emailid="E-mail Id    :     "
+echo.
+set /p anumber="Number       :     "
+echo.
+set /p apasswd="Password     :     "
+echo.
+set /p adate="date         :     "
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo Is everything correct ?
+echo.
+echo ^| Platform     :     %platform%
+echo ^| Page URL     :     %pageurl%
+echo ^| User Name    :     %username%
+echo ^| E-mail Id    :     %emailid%
+echo ^| Number       :     %anumber%
+echo ^| Password     :     %apasswd%
+echo ^| date         :     %adate%
+echo.
+echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
+choice /C:yn /N /M "->[Press 'Y' or 'N']<-"
+if errorlevel == 2 cls && goto add_pass
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+echo %date% ^|^|%time% : New password added to database.>>AppsDataBase\log.txt
+echo Platform     :     %platform%>>AppsDataBase\T71b
+echo Page URL     :     %pageurl%>>AppsDataBase\T71b
+echo User Name    :     %username%>>AppsDataBase\T71b
+echo E-mail Id    :     %emailid%>>AppsDataBase\T71b
+echo Number       :     %anumber%>>AppsDataBase\T71b
+echo Password     :     %apasswd%>>AppsDataBase\T71b
+echo date         :     %adate%>>AppsDataBase\T71b
+echo -------------------------------------------------------->>AppsDataBase\T71b
+echo -------------------------------------------------------->>AppsDataBase\T71b
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Password has been added.
+timeout /t 3
+goto login_tasks
+
+:check_logs
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+if not exist AppsDataBase\log.txt (
+	echo %date% ^|^|%time% : Detected previous logs deleted.>>AppsDataBase\log.txt
+	goto read_log_guest
+) else (
+	type AppsDataBase\log.txt
+	echo.
+	echo. ^| [1] Change login information. [2] Check password file. ^|
+	echo. ^| [3] Edit password file.       [4] Add new passwords.   ^|
+	echo. ^| [5] Logout of account.        [6] Logout and exit.     ^|
+	echo. ^| [7] Get back to options selection menu.                ^|
+	echo. ^| [8] Clear all previous logs.                           ^| && echo.
+	choice /C:12345678 /N /M "->[Waiting for you to select]<-"
+	if errorlevel == 8 echo %date% ^|^|%time% : Cleared all previous logs.>AppsDataBase\log.txt && goto check_logs
+	if errorlevel == 7 goto login_tasks
+	if errorlevel == 6 goto end_process
+	if errorlevel == 5 goto check_user_state
+	if errorlevel == 4 goto add_pass
+	if errorlevel == 3 goto edit_pass
+	if errorlevel == 2 goto check_pass
+	if errorlevel == 1 goto change_login
+	goto login_tasks
+)
+
+:make_backup
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Type filename you want to use for backup ...
+echo. Press [Enter] to ignore this ...
+echo.
+set /p "backup=>File name? : "
+echo.
+echo. Copying files ...
+copy AppsDataBase\71a.op >nul
+copy AppsDataBase\71b.op >nul
+copy AppsDataBase\cfg.ini >nul
+echo. Compressing files ...
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -sdel -scsUTF-16LE "%backup%.backup" 71a.op 71b.op cfg.ini >nul
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. Backup file placed on current folder : %~dp0
+echo. File name is "%backup%.backup".
+echo. press any key to go back ...
+pause >nul
+goto login_tasks
+
+:forgotpass
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo.
+echo. Forgot password? Thats definitely why you use ~ConsolePassX.
+echo. But don't worry you can reset you password easily.
+echo. Just enter your name below and keep following ...
+echo.
+set /p "name=Type out your nick/user name : "
+if %name% EQU %uname% (
+	goto get_number
+) else (
+	echo Incorrect username.
+	echo You might have misspelled.
+	echo Press any key to try again ...
+	pause >nul
+	goto forgotpass
+)
+
+:get_number
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. We need to conform its you so type you phone number.
+echo.
+set /p "number=Type your phone number : "
+if %number% == %ukeys% goto reset_passwd
+echo You have entered incorrect number.
+echo Please try again, press any key ...
+pause >nul && goto get_number
+
+:reset_passwd
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. You have entered correct phone number.
+echo. So now you can reset you password ...
+echo.
+set /p "name=Type your new nick name : "
+echo.
+set /p "passwd=Please create a new master password : "
+if %passwd% == %upass% (
+	echo Fun fact, this is your old password :^)
+	goto reset_number
+)
+
+:reset_number
+echo.
+echo Do you want to change phone Number ?
+choice /C:yn /N /M "Press Y [For Yes] or N [For No]"
+if errorlevel == 2 (
+	goto save_forgoten_changes
+) else (
+	goto get_new_number
+)
+
+:get_new_number
+echo.
+echo Incase you forget password again ...
+set /p "number=Type your phone number : "
+goto save_forgoten_changes
+
+:save_forgoten_changes
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo.
+echo. Is everything correct?
+echo.
+echo ------------------------------------------------------------------------------
+echo ^| Name      :  %name%
+echo ^| Password  :  %passwd%
+echo ^| Number    :  %number%
+echo ------------------------------------------------------------------------------
+echo.
+echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
+choice /C:yn /N /M "->[Press 'Y' or 'N']<-"
+if errorlevel == 2 cls && goto reset_passwd
+echo. Saving changes ...
+echo uname=%name%>AppsDataBase\T71a
+echo upass=%passwd%>>AppsDataBase\T71a
+echo ukeys=%number%>>AppsDataBase\T71a
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{default=N*lock*} -sdel -scsUTF-16LE "AppsDataBase\71a.op" "AppsDataBase\T71a" >nul
+AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" -oAppsDataBase\ >nul
+set lockpass=%passwd%
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+echo %date% ^|^|%time% : Login info was forgotten so was reset.>>AppsDataBase\log.txt
+timeout /t 1 /nobreak >nul
+goto check_user_state
+
+:end_process
+cls
+echo ==============================================================================
+echo.                   ~ConsolePassX -Console Password Manager.
+echo ==============================================================================
+echo.
+echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+echo.
+echo. Checking files ...
+if exist AppsDataBase\T71a (
+	AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{default=N*lock*} -sdel -scsUTF-16LE "AppsDataBase\71a.op" "AppsDataBase\T71a" >nul
+)
+if exist AppsDataBase\T71b (
+	AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -p{pass=%lockpass%} -sdel -scsUTF-16LE "AppsDataBase\71b.op" "AppsDataBase\T71b" >nul
+)
+echo. Everything is ok ...
 echo. Press any key to exit ...
 pause >nul && exit
+
+:: This is a incomplete project yet.
+:: file will be updated soon ...
+
+
