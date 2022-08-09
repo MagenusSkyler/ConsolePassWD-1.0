@@ -17,6 +17,7 @@ set CursorType=2
 set WindowMode=2
 set WinDefault=0
 set endswith=cmd
+set AutoBackup=1
 set bg_color=7
 set fg_color=0
 set Restore=0
@@ -56,7 +57,7 @@ set opt=
 @REM setting other environment variables
 set restore_bak=cpdata
 set backup=cpdata
-set errorcode=0
+set errorcode=
 set Gplatform=
 set Gusername=
 set psCommand=
@@ -215,6 +216,10 @@ echo.>>AppsDataBase\cfg.ini
 echo #=[\~ConsolePassX\Sys\]                                                >>AppsDataBase\cfg.ini
 echo #=Valid value for "State" is 1 and 2, don't change manually.           >>AppsDataBase\cfg.ini
 echo State=^%state%>>AppsDataBase\cfg.ini
+echo.>>AppsDataBase\cfg.ini
+echo #=AutoBackup will make automatic backup of database files.             >>AppsDataBase\cfg.ini
+echo #=Set value to 0 if you want to turn off, valid value [0 and 1].       >>AppsDataBase\cfg.ini
+echo AutoBackup=^%AutoBackup%>>AppsDataBase\cfg.ini
 echo.>>AppsDataBase\cfg.ini
 echo #=[\Window\Configuration\]                                             >>AppsDataBase\cfg.ini
 echo #=Do not change ScreenBufferSize value for maximum password limit.     >>AppsDataBase\cfg.ini
@@ -434,14 +439,12 @@ echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 set /p name="Enter your nick/user name : " && echo.
-set name=%name: =%
 if %name% == 0 (
 	echo Name cannot have value 0.
 	echo Press any key to start over ...
 	pause >nul && goto create_ac
 )
 set /p pass="Create a new master password : " && echo.
-set pass=%pass: =%
 if %pass% == 0 (
 	echo Password cannot have value 0.
 	echo Press any key to start over ...
@@ -471,6 +474,8 @@ echo.
 echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
 choice /C:yn /N /M "->[If this is correct Press 'Y' else Press 'N']<-"
 if errorlevel == 2 cls && goto create_ac
+set name=%name: =%
+set pass=%pass: =%
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
@@ -1077,13 +1082,14 @@ timeout /T 1 /nobreak >nul
 goto check_configuration
 
 :login_ac
+if %counter% EQU 1 goto lockout
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
 echo ==============================================================================
 echo.
 set /p login_name="Type your user name: "
-if %counter% EQU 1 goto lockout
+set login_name=%login_name: =%
 
 set "psCommand=powershell -Command " $pword = read-host 'Enter your password' -AsSecureString;^
   $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword);^
@@ -1091,6 +1097,7 @@ set "psCommand=powershell -Command " $pword = read-host 'Enter your password' -A
     for /f "usebackq delims=" %%p in (`%psCommand%`) do set login_pass=%%p
 )
 
+set login_pass=%login_pass: =%
 if %login_name% == %uname% (
 	if %login_pass% == %upass% echo %date% ^|^|%time% : Logged in to account successfully.>>AppsDataBase\log.txt && goto login_tasks
 ) else (
@@ -1117,6 +1124,9 @@ set counter=3
 goto old_user
 
 :login_tasks
+if %AutoBackup% GTR 1 (
+	AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE "AppsDataBase\A.bak" "AppsDataBase\71a.op" "AppsDataBase\71b.op" >nul
+)
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
@@ -1376,7 +1386,7 @@ copy AppsDataBase\71a.op >nul
 copy AppsDataBase\71b.op >nul
 copy AppsDataBase\cfg.ini >nul
 echo. Compressing files ...
-AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -sdel -scsUTF-16LE "%backup%.backup" 71a.op 71b.op cfg.ini >nul
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE "%backup%.backup" 71a.op 71b.op cfg.ini >nul
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
@@ -1510,5 +1520,4 @@ pause >nul && exit
 
 :: This is a incomplete project yet.
 :: file will be updated soon ...
-
 
