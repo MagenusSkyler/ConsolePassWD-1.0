@@ -105,13 +105,13 @@ if not exist AppsDataBase\cfg.ini (
 @REM read %errorcode% value to show error
 :check_error
 if %errorcode% == 1 (
-   echo %date% ^|^|%time% : Error, 7z.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
-   cls
+	echo %date% ^|^|%time% : Error, 7z.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
+	cls
 	echo ==============================================================================
-   echo.                   ~ConsolePassX -Console Password Manager.
-   echo ==============================================================================
-   echo.
-   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Error found, error code is 0x001
 	echo. File missing from AppsDataBase folder [File name = 7z.exe].
@@ -119,13 +119,13 @@ if %errorcode% == 1 (
 	echo. ~ConsolePassX cannot run without [7z.exe], press any key to exit app.
 	pause >nul && exit
 ) else if %errorcode% == 2 (
-   echo %date% ^|^|%time% : Error, Te.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
+	echo %date% ^|^|%time% : Error, Te.exe  missing from AppsDataBase folder.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                   ~ConsolePassX -Console Password Manager.
-   echo ==============================================================================
-   echo.
-   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Error found, error code is "0x002"
 	echo. File missing from AppsDataBase folder [File name = Te.exe].
@@ -133,13 +133,13 @@ if %errorcode% == 1 (
 	echo. ~ConsolePassX cannot run without [Te.exe], press any key to exit app.
 	pause >nul && exit
 ) else if errorlevel == 3 (
-   echo %date% ^|^|%time% : Error, Incorrect State value found in cfg.ini.>>AppsDataBase\log.txt
+	echo %date% ^|^|%time% : Error, Incorrect State value found in cfg.ini.>>AppsDataBase\log.txt
 	cls
 	echo ==============================================================================
-   echo.                   ~ConsolePassX -Console Password Manager.
-   echo ==============================================================================
-   echo.
-   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. There is a mistake in configuration under [\~ConsolePassX\State\].
 	echo. "State" value is invalid, you can manually set it to 1 or 2.
@@ -147,12 +147,12 @@ if %errorcode% == 1 (
 	echo. Press any key to automatically fix this mistake ...
 	pause >nul && goto generate_cgf
 ) else if %errorcode% == 4 (
-   cls
+	cls
 	echo ==============================================================================
-   echo.                   ~ConsolePassX -Console Password Manager.
-   echo ==============================================================================
-   echo.
-   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Warning : critical error "0x004"
 	echo. Cannot auto recover file ...
@@ -177,12 +177,12 @@ if %errorcode% == 1 (
 	pause >nul
 	goto restore_backup
 ) else if %errorcode% == 5 (
-   cls
+	cls
 	echo ==============================================================================
-   echo.                   ~ConsolePassX -Console Password Manager.
-   echo ==============================================================================
-   echo.
-   echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. ~ConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 	echo.
 	echo. Warning : critical error "0x005"
 	echo. Cannot auto recover file ... :^(
@@ -200,8 +200,55 @@ if %errorcode% == 1 (
 	echo. Press any key to try loading backup ...
 	pause >nul
 	goto restore_backup
+) if %errorcode% == 6 (
+	cls
+	echo ==============================================================================
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	echo. Seems like login data file is corrupted.
+	echo. ConsolePassX will try to fix this automatically.
+	echo. If failed you might have to load any of you manually made backup.
+	echo. And if you have changed password last time you have to use last password.
+	echo. If you forgot that you can reset it again.
+	echo. Press any key to try to fix this automatically ...
+	pause >nul
+	goto fix_corrupted
 )
    goto check_user_state
+
+:fix_corrupted
+	cls
+	echo ==============================================================================
+	echo.                   ~ConsolePassX -Console Password Manager.
+	echo ==============================================================================
+	echo.
+	if exist AppsDataBase\A.bak (
+		copy AppsDataBase\A.bak
+		AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE A.bak >nul
+		move /y 71a.op AppsDataBase\ && del 71b.op
+	) else (
+		echo. Sorry file couldnt be recovered.
+		echo. Load backup if you have ...
+		echo. There is another way, read below :
+		echo.
+		echo. Steps for manual recovery :
+		echo. Step 01 : Install ~ConsolePassX 1.0 in another folder.
+		echo. Step 02 : Create another account with same name and password.
+		echo. Step 03 : Open AppsDataBase folder and locate file 71a.op in new one.
+		echo. Step 04 : Copy file and paste it in old ~ConsolePassX's AppsDataBase folder.
+		echo. Step 05 : Run old ~ConsolePassX app and you should be able to proceed.
+		echo. Step 06 : Login with your name and password and it should look normal.
+		echo.
+		echo. If you don't remember you password then you cannot recover passwords.
+		echo. Then only option will be to use backup if you have made earlier.
+		echo.
+		echo. Best of luck on getting your passwords back :^)
+		echo. We are really sorry for this inconvenience ...
+		echo. Press any key to restart app
+		pause >nul
+		goto start_main
+	)
 
 @REM generate cfg.ini and change setting automatically if needed
 :generate_cgf
@@ -689,7 +736,7 @@ echo Password     :     supersecretpassword
 echo date         :     10/10/2021
 echo --------------------------------------------------------
 echo --------------------------------------------------------
-echo Platform     :     ~ConsolePassX
+echo Platform     :     gConsolePassX
 echo Page URL     :     https://github.com/MagenusSkyler
 echo User Name    :     Your name
 echo E-mail Id    :     your email id
@@ -703,8 +750,10 @@ echo. ^| [1] Change login information. [2] Refresh password file. ^|
 echo. ^| [3] Edit password file.       [4] Add new passwords.     ^|
 echo. ^| [5] Logout of account.        [6] Logout and exit.       ^|
 echo. ^| [7] Get back to options selection menu.                  ^|
+echo. ^| [8] Fix file not found error. [ Rare ]                   ^|
 echo.
 choice /C:1234567 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 8 goto check_guest
 if errorlevel == 7 goto login_task_guest
 if errorlevel == 6 goto exit_app_guest
 if errorlevel == 5 goto check_user_state
@@ -1083,6 +1132,10 @@ goto check_configuration
 
 :login_ac
 if %counter% EQU 1 goto lockout
+if %uname% EQU 0 (
+	set errorcode=6
+	goto check_error
+)
 cls
 echo ==============================================================================
 echo.                   ~ConsolePassX -Console Password Manager.
@@ -1124,7 +1177,7 @@ set counter=3
 goto old_user
 
 :login_tasks
-if %AutoBackup% GTR 1 (
+if %AutoBackup% GEQ 1 (
 	AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE "AppsDataBase\A.bak" "AppsDataBase\71a.op" "AppsDataBase\71b.op" >nul
 )
 cls
@@ -1212,8 +1265,10 @@ echo.
 echo. ^| [1] Change login information. [2] Refresh password file. ^|
 echo. ^| [3] Edit password file.       [4] Add new passwords.     ^|
 echo. ^| [5] Logout of account.        [6] Logout and exit        ^| 
-echo. ^| [7] Get back to options selection menu.                  ^| && echo.
+echo. ^| [7] Get back to options selection menu.                  ^| 
+echo. ^| [8] Fix file not found error. [ Rare ]                   ^| && echo.
 choice /C:1234567 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 8 goto fix_filenotfound
 if errorlevel == 7 goto login_tasks
 if errorlevel == 6 goto end_process
 if errorlevel == 5 goto check_user_state
@@ -1221,6 +1276,16 @@ if errorlevel == 4 goto add_pass
 if errorlevel == 3 goto edit_pass
 if errorlevel == 2 goto check_pass
 if errorlevel == 1 goto change_login
+
+:fix_filenotfound
+if not exists AppsDataBase\A.bak (
+	echo. Cannot fix without A.bak
+	echo. Please load Backup ...
+) else (
+	copy AppsDataBase\A.bak
+	AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE A.bak >nul
+	move /y 71b.op AppsDataBase\ && del 71a.op
+)
 
 :edit_pass
 cls
@@ -1517,7 +1582,3 @@ if exist AppsDataBase\T71b (
 echo. Everything is ok ...
 echo. Press any key to exit ...
 pause >nul && exit
-
-:: This is a incomplete project yet.
-:: file will be updated soon ...
-
