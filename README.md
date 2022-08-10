@@ -6,5 +6,6 @@
 About ~ConsolePassX 1.0:
 >> Ms-Windows terminal based password manager made by Abdullah Al Noman.
 >> Supports all version from Windows 2000 to Windows 11.
+>> Passwords are saved on local computer.
 >> Encrypts and compresses passwords.
 >> Portable password manager.
