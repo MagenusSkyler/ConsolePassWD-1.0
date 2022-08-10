@@ -200,7 +200,7 @@ if %errorcode% == 1 (
 	echo. Press any key to try loading backup ...
 	pause >nul
 	goto restore_backup
-) if %errorcode% == 6 (
+) else if %errorcode% == 6 (
 	cls
 	echo ==============================================================================
 	echo.                   ~ConsolePassX -Console Password Manager.
@@ -226,7 +226,7 @@ if %errorcode% == 1 (
 	if exist AppsDataBase\A.bak (
 		copy AppsDataBase\A.bak
 		AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE A.bak >nul
-		move /y 71a.op AppsDataBase\ && del 71b.op
+		move /y 71a.op AppsDataBase\ && del 71b.op && del A.bak
 	) else (
 		echo. Sorry file couldnt be recovered.
 		echo. Load backup if you have ...
@@ -1132,7 +1132,7 @@ goto check_configuration
 
 :login_ac
 if %counter% EQU 1 goto lockout
-if %uname% EQU 0 (
+if %uname% == 0 (
 	set errorcode=6
 	goto check_error
 )
@@ -1267,8 +1267,8 @@ echo. ^| [3] Edit password file.       [4] Add new passwords.     ^|
 echo. ^| [5] Logout of account.        [6] Logout and exit        ^| 
 echo. ^| [7] Get back to options selection menu.                  ^| 
 echo. ^| [8] Fix file not found error. [ Rare ]                   ^| && echo.
-choice /C:1234567 /N /M "->[Waiting for you to select]<-"
-if errorlevel == 8 goto fix_filenotfound
+choice /C:12345678 /N /M "->[Waiting for you to select]<-"
+if errorlevel == 8 goto fix_notfound
 if errorlevel == 7 goto login_tasks
 if errorlevel == 6 goto end_process
 if errorlevel == 5 goto check_user_state
@@ -1277,14 +1277,17 @@ if errorlevel == 3 goto edit_pass
 if errorlevel == 2 goto check_pass
 if errorlevel == 1 goto change_login
 
-:fix_filenotfound
-if not exists AppsDataBase\A.bak (
+:fix_notfound
+if not exist AppsDataBase\A.bak (
 	echo. Cannot fix without A.bak
 	echo. Please load Backup ...
+	pause >nul
+	goto login_tasks
 ) else (
 	copy AppsDataBase\A.bak
 	AppsDataBase\7z.exe e -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE A.bak >nul
-	move /y 71b.op AppsDataBase\ && del 71a.op
+	move /y 71b.op AppsDataBase\ && del 71a.op && del A.bak
+	goto check_pass
 )
 
 :edit_pass
