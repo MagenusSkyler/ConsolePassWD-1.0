@@ -668,6 +668,8 @@ echo.
 echo Are you sure you want to reset all login information ?
 echo.
 AppsDataBase\m.exe %menuhover% "| Yes im sure |" "| No go back  |"
+if errorlevel == 2 goto login_task_guest
+if errorlevel == 1 goto change_guest
 goto change_login_guest
 :change_guest
 set gname=Name
@@ -1210,7 +1212,7 @@ echo ^| New Number    :   %opt_keys%
 echo -------------------------------------------------------------------
 echo.
 AppsDataBase\m.exe %menuhover% "| Yes everything is correct |" "| No there is a mistake     |"
-if errorlevel == 2 goto change_user_info
+if errorlevel == 2 goto change_login
 echo uname=%opt_name%>AppsDataBase\T71a
 echo upass=%opt_pass%>>AppsDataBase\T71a
 echo ukeys=%opt_keys%>>AppsDataBase\T71a
