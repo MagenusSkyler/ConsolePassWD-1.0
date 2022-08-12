@@ -571,7 +571,7 @@ echo. gConsolePassX 1.0 : Copyright 2021 - 2022 Abdullah Al Noman.
 echo.
 echo. You are about to enter guest mode now.
 echo. You will be able to take a look at all the functions.
-echo. Press any key to start taking a look around gConsolePassX 1.0 ...
+echo. Select any option from below ...
 echo.
 AppsDataBase\m.exe %menuhover% "| Ok lets go |" "| Go back    |"
 if errorlevel == 2 goto new_user
