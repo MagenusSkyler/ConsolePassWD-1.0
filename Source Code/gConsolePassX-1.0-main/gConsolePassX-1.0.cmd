@@ -1424,7 +1424,7 @@ copy AppsDataBase\71a.op >nul
 copy AppsDataBase\71b.op >nul
 copy AppsDataBase\conf.ini >nul
 echo. Compressing files ...
-AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE "%backup%.backup" 71a.op 71b.op conf.ini >nul
+AppsDataBase\7z.exe a -t7z -mx9 -sccUTF-8 -ssp -y -bd -scsUTF-16LE -sdel "%backup%.backup" 71a.op 71b.op conf.ini >nul
 cls
 echo ==============================================================================
 echo.                   gConsolePassX -Console Password Manager.
