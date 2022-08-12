@@ -1241,7 +1241,7 @@ echo -------------------------------------------------------------------
 echo.
 echo [Y = Yes] ^| [N = No], Select No if there is a mistake.
 choice /C:yn /N /M "->[If this is correct Press 'Y' else Press 'N']<-"
-if errorlevel == 2 goto change_user_info
+if errorlevel == 2 goto change_login
 echo uname=%opt_name%>AppsDataBase\T71a
 echo upass=%opt_pass%>>AppsDataBase\T71a
 echo ukeys=%opt_keys%>>AppsDataBase\T71a
