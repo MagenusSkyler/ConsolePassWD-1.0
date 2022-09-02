@@ -1,11 +1,15 @@
-# ~ConsolePassX 1.0
- MS-Windows Console based password manager.
+# ConsolePassX
 
-~ConsolePassX 1.0 (x86) : Copyright (c) 2021-2022 : Abdullah Al Noman
+- MS-Windows (x86) Console based password manager.
+- Supports all version from Windows 2000 to Windows 11.
+- Passwords are saved on local computer.
+- Encrypts and compresses passwords.
+- Portable password manager.
 
-About ~ConsolePassX 1.0:
->> Ms-Windows terminal based password manager made by Abdullah Al Noman.
->> Supports all version from Windows 2000 to Windows 11.
->> Passwords are saved on local computer.
->> Encrypts and compresses passwords.
->> Portable password manager.
+
+
+## Screenshots
+
+![App Screenshot](https://github.com/MagenusSkyler/ConsolePassX/blob/main/Preview/~ConsolePassX-1.0.png?raw=true)
+![App Screenshot](https://github.com/MagenusSkyler/ConsolePassX/blob/main/Preview/gConsolePassX-1.0.png?raw=true)
+![App Screenshot](https://github.com/MagenusSkyler/ConsolePassX/blob/main/Preview/aConsolePassX-1.0.png?raw=true)
