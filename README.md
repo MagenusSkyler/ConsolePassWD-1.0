@@ -9,23 +9,22 @@
 - It's easy to use.
 ## Settings
 
-- Settings can be edited from console window or by using windows notepad (*.ini file)
-- Background and foreground color can be changed
-- Window transparency level can be changed
-- Console's cursor size, color & design can be changed
-- Can set default window size and screen buffer size
-- Auto backup can be enabled and disabled
-- Can restore default settings
+- Settings can be edited from console window or by using windows notepad (*.ini file).
+- Background and foreground color can be changed.
+- Window transparency level can be changed.
+- Console's cursor size, color & design can be changed.
+- Can set default window size and screen buffer size.
+- Auto backup can be enabled and disabled.
+- Can restore default settings.
 
 ## Features
 
-- Can check all features without creating account from menu
-- Password recovery options available in case forgotten
-- Manual backup can be made from options menu
-- Auto backup will be restored automatically if needed
-- Manual backup can be restored from options menu
-- Manual backups can be made using backups option
-- Usage logs can be viewed from "Check logs" option
+- Can check all features without creating account from menu.
+- Password recovery options available in case forgotten.
+- Usage logs can be viewed from "Check logs" option.
+- Auto backup will be restored automatically if needed.
+- Manual backup can be restored from options menu.
+- Manual backups can be made using backups option.
 
 
 ## Get ConsolePassX
@@ -50,6 +49,7 @@ Direct downloads
 [⊚➥ Download aConsolePassX 1.0 zip](https://github.com/MagenusSkyler/ConsolePassX/raw/main/Bin/aConsolePassX-1.0-main.zip)
 
 [⊚➥ Download aCPX Installer 1.0 zip](https://github.com/MagenusSkyler/ConsolePassX/raw/main/Bin/aCPX-1.0-GUI-Installer.zip)
+
 ## Screenshots
 
 ~ConsolePassX (This version only takes keyboard input)
@@ -58,6 +58,7 @@ gConsolePassX (This version takes both mouse and keyboard input)
 ![gConsolePassX](https://github.com/MagenusSkyler/ConsolePassX/blob/main/Preview/gConsolePassX-1.0.png?raw=true)
 ~ConsolePassX (This version only takes mouse input)
 ![aConsolePassX](https://github.com/MagenusSkyler/ConsolePassX/blob/main/Preview/aConsolePassX-1.0.png?raw=true)
+
 ## License
 
 [View MIT License.](https://github.com/MagenusSkyler/ConsolePassX/blob/main/LICENSE)
