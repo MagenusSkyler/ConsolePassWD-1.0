@@ -6,7 +6,26 @@
 - Passwords are saved on local computer.
 - Encrypts and compresses passwords.
 - Portable password manager.
+- It's easy to use.
+## Settings
 
+- Settings can be edited from console window or by using windows notepad (*.ini file)
+- Background and foreground color can be changed
+- Window transparency level can be changed
+- Console's cursor size, color & design can be changed
+- Can set default window size and screen buffer size
+- Auto backup can be enabled and disabled
+- Can restore default settings
+
+## Features
+
+- Can check all features without creating account from menu
+- Password recovery options available in case forgotten
+- Manual backup can be made from options menu
+- Auto backup will be restored automatically if needed
+- Manual backup can be restored from options menu
+- Manual backups can be made using backups option
+- Usage logs can be viewed from "Check logs" option
 
 
 ## Get ConsolePassX
@@ -16,7 +35,7 @@ Clone the project
 ```bash
   git clone https://github.com/MagenusSkyler/ConsolePassX.git
 ```
-Direct download
+Direct downloads
 
 [⊚➥ Download GitHub repository as zip](https://github.com/MagenusSkyler/ConsolePassX/archive/refs/heads/main.zip)
 
